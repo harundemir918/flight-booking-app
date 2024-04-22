@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -40,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
     packaging {
         resources {
@@ -66,4 +68,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // DataStore Preferences
+    implementation("androidx.datastore:datastore-preferences:1.1.0")
+
+    // Dagger - Hilt
+    ksp ("com.google.dagger:dagger-compiler:2.51.1")// Dagger compiler
+    ksp ("com.google.dagger:hilt-compiler:2.51.1")   // Hilt compiler
+    ksp ("com.google.dagger:hilt-android:2.51.1")   // Hilt compiler
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 }
